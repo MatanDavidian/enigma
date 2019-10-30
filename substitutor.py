@@ -37,7 +37,6 @@ class Substitutor(ABC):
             self.rotorIndex1 = (self.rotorIndex1 + 1) % 26
 
         self.rotorIndex5 = (self.rotorIndex1+5)%26
-
         if self.rotorIndex5 == 0: # move from z to a
             self.rotorIndex4 = (self.rotorIndex4 +1)%26
 
@@ -49,3 +48,6 @@ class Substitutor(ABC):
 
                     if self.rotorIndex2 == 5:  # move from e to f
                         self.rotorIndex1 = (self.rotorIndex1 + 1) % 26
+
+    def translation(self):
+        pass
