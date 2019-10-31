@@ -53,15 +53,15 @@ class Substitutor(ABC):
 
     def letter_index_reverse_conversions(self, char_input, rotor_num):
         if rotor_num == 1:
-            return self.rotorReverseConversion1[chr((char_input - self.rotorIndex1) % 26 + 65)]
+            return self.rotorReverseConversion1[chr((char_input + self.rotorIndex1) % 26 + 65)] - self.rotorIndex1
         elif rotor_num == 2:
-            return self.rotorReverseConversion2[chr((char_input - self.rotorIndex2)%26 + 65)]
+            return self.rotorReverseConversion2[chr((char_input + self.rotorIndex2)%26 + 65)] - self.rotorIndex2
         elif rotor_num == 3:
-            #print(chr((char_input - self.rotorIndex3)%26 + 65))
-            return self.rotorReverseConversion3[chr((char_input - self.rotorIndex3)%26 + 65)]
+            #print(chr((char_input + self.rotorIndex3)%26 + 65))
+            return self.rotorReverseConversion3[chr((char_input + self.rotorIndex3)%26 + 65)] - self.rotorIndex3
         elif rotor_num == 4:
-            #print(chr((char_input - self.rotorIndex4)%26 + 65))
-            return self.rotorReverseConversion4[chr((char_input - self.rotorIndex4)%26 + 65)]
+            #print(chr((char_input + self.rotorIndex4)%26 + 65))
+            return self.rotorReverseConversion4[chr((char_input + self.rotorIndex4)%26 + 65)] - self.rotorIndex4
         elif rotor_num == 5:
             #print(chr((char_input + self.rotorIndex5)%26 + 65))
             return self.rotorReverseConversion5[chr((char_input + self.rotorIndex5)%26 + 65)] - self.rotorIndex5

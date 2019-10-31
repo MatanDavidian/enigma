@@ -16,7 +16,7 @@ class Enigma(Substitutor):
                 #print(encrypt_process)
                 encrypt_process = Substitutor.letter_index_conversions(self, encrypt_process, 3)
                 #print(encrypt_process)
-                encrypt_process = ord(Substitutor.reflectorConversion[encrypt_process]) -65
+                encrypt_process = ord(Substitutor.reflectorConversion[encrypt_process]) - 65
                 #print(encrypt_process)
                 encrypt_process = Substitutor.letter_index_reverse_conversions(self, encrypt_process, 3)
                 #print(encrypt_process)
@@ -25,8 +25,11 @@ class Enigma(Substitutor):
                 encrypt_process = Substitutor.letter_index_reverse_conversions(self, encrypt_process, 5)
                 #print(encrypt_process)
                 encrypt_process = Substitutor.plugBoard[encrypt_process]
-            print(encrypt_process)
+                print(encrypt_process, end='')
 
 
 e = Enigma()
-e.complete_letter_translation("ENIGMA")
+encrypt = "ENIGMABYMATANTOMALEXTOMERAAA"
+print("encrypt: " + encrypt)
+print("decrypt: ", end='')
+e.complete_letter_translation(encrypt)
