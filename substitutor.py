@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 class Substitutor(ABC):
     rotorConversion1 = ['E','K','M','F','L','G','D','Q','V','Z','N','T','O','W','Y','H','X','U','S','P','A','I','B','R','C','J']
     rotorIndex1 = 0
-    rotorConversion2 = ['A''J''D''K''S''I''R''U''X''B''L''H''W''T''M''C''Q''G''Z''N''P''Y''F''V''O''E']
+    rotorConversion2 = ['A','J','D','K','S','I','R','U','X','B','L','H','W','T','M','C','Q','G','Z','N','P','Y','F','V','O','E']
     rotorIndex2 = 0
     rotorConversion3 = ['B','D','F','H','J','L','C','P','R','T','X','V','Z','N','Y','E','I','W','G','A','K','M','U','S','Q','O']
     rotorIndex3 = 0
@@ -16,15 +16,15 @@ class Substitutor(ABC):
     def letter_index_conversions(self, char_input, rotor_num):
         char_input -= 65
         if rotor_num == 1:
-            return self.rotorConversion1[char_input]
+            return self.rotorConversion1[(char_input + self.rotorIndex1)%26]
         elif rotor_num == 2:
-            return self.rotorConversion2[char_input]
+            return self.rotorConversion2[(char_input + self.rotorIndex2)%26]
         elif rotor_num == 3:
-            return self.rotorConversion3[char_input]
+            return self.rotorConversion3[(char_input + self.rotorIndex3)%26]
         elif rotor_num == 4:
-            return self.rotorConversion4[char_input]
+            return self.rotorConversion4[(char_input + self.rotorIndex4)%26]
         elif rotor_num == 5:
-            return self.rotorConversion5[char_input]
+            return self.rotorConversion5[(char_input + self.rotorIndex5)%26]
         elif rotor_num == 6:
             return self.reflectorConversion[char_input]
 
