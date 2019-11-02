@@ -1,4 +1,5 @@
 from translator import Translator
+from consts import LETTER_A_IN_ASCII,LETTER_Z_IN_ASCII
 
 """
     this class holds the dictionary which simulate the plugboard.
@@ -13,8 +14,8 @@ class Plugboard(Translator):
         for easy switching, and using.
     """
     def __init__(self):
-        self.plugs={}
-        for i in range (65,91):
+        self.plugs = {}
+        for i in range(LETTER_A_IN_ASCII, LETTER_Z_IN_ASCII+1):
             self.plugs[chr(i)] = chr(i)
         print(self.plugs)
 
@@ -30,3 +31,4 @@ class Plugboard(Translator):
 
 
     pass
+
