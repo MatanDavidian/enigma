@@ -1,7 +1,5 @@
-from abc import ABC, abstractmethod
+class Substitutor():
 
-
-class Substitutor(ABC):
     def __init__(self):
         self.configured = False
         self.firstTurnoverNotch = 0
@@ -45,8 +43,6 @@ class Substitutor(ABC):
 
         self.reflectorConversion = ['Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O', 'K', 'M', 'I', 'E', 'B',
                                'F', 'Z', 'C', 'W', 'V', 'J', 'A', 'T']
-        self.plugBoard = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-                     'U', 'V', 'W', 'X', 'Y', 'Z']
 
     def set_rotor_order(self, first, second, third):
         if first == 1:
@@ -86,36 +82,36 @@ class Substitutor(ABC):
         # print(char_input_num)
         if rotor_num == 1:
             # print(self.rotorConversion1[(char_input_num + self.rotorIndex1) % 26])
-            return ord(self.rotorConversion1[(char_input_num + rotor_index) % 26]) - 65 - rotor_index
+            return (ord(self.rotorConversion1[(char_input_num + rotor_index) % 26]) - 65 - rotor_index) % 26
         elif rotor_num == 2:
             # print(self.rotorConversion2[(char_input_num + self.rotorIndex2) % 26])
-            return ord(self.rotorConversion2[(char_input_num + rotor_index) % 26]) - 65 - rotor_index
+            return (ord(self.rotorConversion2[(char_input_num + rotor_index) % 26]) - 65 - rotor_index) % 26
         elif rotor_num == 3:
             # print(self.rotorConversion3[(char_input_num + self.rotorIndex3) % 26])
-            return ord(self.rotorConversion3[(char_input_num + rotor_index) % 26]) - 65 - rotor_index
+            return (ord(self.rotorConversion3[(char_input_num + rotor_index) % 26]) - 65 - rotor_index) % 26
         elif rotor_num == 4:
             # print(self.rotorConversion4[(char_input_num + self.rotorIndex4) % 26])
-            return ord(self.rotorConversion4[(char_input_num + rotor_index) % 26]) - 65 - rotor_index
+            return (ord(self.rotorConversion4[(char_input_num + rotor_index) % 26]) - 65 - rotor_index) % 26
         elif rotor_num == 5:
             # print(self.rotorConversion5[(char_input_num + self.rotorIndex5) % 26])
-            return ord(self.rotorConversion5[(char_input_num + rotor_index) % 26]) - 65 - rotor_index
+            return (ord(self.rotorConversion5[(char_input_num + rotor_index) % 26]) - 65 - rotor_index) % 26
         elif rotor_num == 6:
             return self.reflectorConversion[char_input_num] + 65
 
     def letter_index_reverse_conversions(self, char_input, rotor_num, rotor_index):
         if rotor_num == 1:
-            return self.rotorReverseConversion1[chr((char_input + rotor_index) % 26 + 65)] - rotor_index
+            return (self.rotorReverseConversion1[chr((char_input + rotor_index) % 26 + 65)] - rotor_index) % 26
         elif rotor_num == 2:
-            return self.rotorReverseConversion2[chr((char_input + rotor_index) % 26 + 65)] - rotor_index
+            return (self.rotorReverseConversion2[chr((char_input + rotor_index) % 26 + 65)] - rotor_index) % 26
         elif rotor_num == 3:
             # print(chr((char_input + self.rotorIndex3)%26 + 65))
-            return self.rotorReverseConversion3[chr((char_input + rotor_index) % 26 + 65)] - rotor_index
+            return (self.rotorReverseConversion3[chr((char_input + rotor_index) % 26 + 65)] - rotor_index) % 26
         elif rotor_num == 4:
             # print(chr((char_input + self.rotorIndex4)%26 + 65))
-            return self.rotorReverseConversion4[chr((char_input + rotor_index) % 26 + 65)] - rotor_index
+            return (self.rotorReverseConversion4[chr((char_input + rotor_index) % 26 + 65)] - rotor_index) % 26
         elif rotor_num == 5:
             # print(chr((char_input + self.rotorIndex5)%26 + 65))
-            return self.rotorReverseConversion5[chr((char_input + rotor_index) % 26 + 65)] - rotor_index
+            return (self.rotorReverseConversion5[chr((char_input + rotor_index) % 26 + 65)] - rotor_index) % 26
 
     def circular_shift(self):
         if self.secondRotorIndex == self.secondTurnoverNotch - 1:
@@ -127,26 +123,5 @@ class Substitutor(ABC):
             self.secondRotorIndex = (self.secondRotorIndex + 1) % 26
             if self.secondRotorIndex == self.secondTurnoverNotch:
                 self.thirdRotorIndex = (self.thirdRotorIndex + 1) % 26
-        '''
-        if self.rotorIndex4 == 9:  # on j
-            self.rotorIndex3 = (self.rotorIndex3 + 1) % 26
-        if self.rotorIndex3 == 21:  # on v
-            self.rotorIndex2 = (self.rotorIndex2 + 1) % 26
-        if self.rotorIndex2 == 4:  # on e
-            self.rotorIndex1 = (self.rotorIndex1 + 1) % 26
-
-        self.rotorIndex5 = (self.rotorIndex5 + 1) % 26
-        if self.rotorIndex5 == 0:  # move from z to a
-            self.rotorIndex4 = (self.rotorIndex4 + 1) % 26
-
-            if self.rotorIndex4 == 10:  # move from j to k
-                self.rotorIndex3 = (self.rotorIndex3 + 1) % 26
-
-                if self.rotorIndex3 == 22:  # move from v to w
-                    self.rotorIndex2 = (self.rotorIndex2 + 1) % 26
-
-                    if self.rotorIndex2 == 5:  # move from e to f
-                        self.rotorIndex1 = (self.rotorIndex1 + 1) % 26
-        '''
     def translation(self):
         pass

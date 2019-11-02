@@ -6,7 +6,7 @@ from translator import Translator
     -   create this dict.
     -   connect plugs to each other.
 """
-class Plugboard(Translator):
+class Plugboard():
     """
         Creates a dictionary called "plugs".
         In this dict. the keys and the values are both CHARS
@@ -16,17 +16,14 @@ class Plugboard(Translator):
         self.plugs={}
         for i in range (65,91):
             self.plugs[chr(i)] = chr(i)
-        print(self.plugs)
-
     """
         Connecting plug1 to plug2 , and plug2 to plug1
     """
-    def connectPair(self, plug1 , plug2):
+    def connectPair(self, plug1, plug2):
         try:
-            if self.plugs[plug1]==plug1 and self.plugs[plug2]==plug2:
-                self.plugs[plug1],self.plugs[plug2]=plug2,plug1
+            if self.plugs[plug1] == plug1 and self.plugs[plug2] == plug2:
+                self.plugs[plug1], self.plugs[plug2] = plug2, plug1
+            else:
+                print("one of the letters already connected")
         except:
             print("please use single capital letters only")
-
-
-    pass
