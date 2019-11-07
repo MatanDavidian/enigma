@@ -37,6 +37,3 @@ class Reflector(Translator):
     def reflect(self,index):
         return self.conversionObj[self.reflectorConversion[index]]
 
-
-r=Reflector();
-print(r.reflect(4))
