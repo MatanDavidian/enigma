@@ -1,5 +1,5 @@
 from translator import Translator
-
+from consts import LETTER_A_IN_ASCII,LETTER_Z_IN_ASCII
 """
     this class holds the dictionary which simulate the plugboard.
     with this class you can:
@@ -14,7 +14,7 @@ class Plugboard():
     """
     def __init__(self):
         self.plugs={}
-        for i in range (65,91):
+        for i in range (LETTER_A_IN_ASCII,LETTER_A_IN_ASCII+1):
             self.plugs[chr(i)] = chr(i)
     """
         Connecting plug1 to plug2 , and plug2 to plug1

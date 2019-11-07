@@ -1,5 +1,5 @@
 from substitutor import Substitutor
-
+from consts import LETTER_A_IN_ASCII
 
 class Enigma(Substitutor):
 
@@ -24,7 +24,7 @@ class Enigma(Substitutor):
                 if 'A' <= c <= 'Z':
                     c = self.plugBoard.plugs[c]
                     # the ASCII value of the char
-                    c_to_num = ord(c) - 65
+                    c_to_num = ord(c) - LETTER_A_IN_ASCII
 
                     Substitutor.circular_shift(self)
                     encrypt_process = Substitutor.letter_index_conversions(self, c_to_num, self.first,
