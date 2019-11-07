@@ -123,15 +123,3 @@ class Substitutor():
                 self.thirdRotorIndex = (self.thirdRotorIndex + 1) % 26
             self.secondRotorIndex = (self.secondRotorIndex + 1) % 26
         self.firstRotorIndex = (self.firstRotorIndex + 1) % 26
-        '''
-        if self.secondRotorIndex == self.secondTurnoverNotch - 1:
-            self.secondRotorIndex = (self.secondRotorIndex + 1) % 26
-            self.thirdRotorIndex = (self.thirdRotorIndex + 1) % 26
-
-        self.firstRotorIndex = (self.firstRotorIndex + 1) % 26
-
-        if self.firstRotorIndex == self.firstTurnoverNotch:
-            self.secondRotorIndex = (self.secondRotorIndex + 1) % 26
-            if self.secondRotorIndex == self.secondTurnoverNotch:
-                self.thirdRotorIndex = (self.thirdRotorIndex + 1) % 26
-        '''
