@@ -1,4 +1,3 @@
-from translator import Translator
 from consts import LETTER_A_IN_ASCII,LETTER_Z_IN_ASCII
 """
     this class holds the dictionary which simulate the plugboard.
