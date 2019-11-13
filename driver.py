@@ -31,7 +31,29 @@ e.machine_configuration_process(rightRotor, rightKey, rightRotorRingSetting, mid
 # fast configuration
 e.machine_configuration_process(4, 8, 5, 2, 3, 7, 1, 18, 2, p)
 
-textToEncrypt = input("Enter A Text To Encrypt: ")
-print("encrypt: " + textToEncrypt)
-print("decrypt: ", end='')
-e.complete_text_translation(textToEncrypt)
+#textToEncrypt = input("Enter A Text To Encrypt: ")
+
+
+
+for i in range(26):
+    for j in range(26):
+      for k in range(26):
+        p.connectPair('Z', 'U')
+        p.connectPair('W', 'M')
+        p.connectPair('H', 'L')
+        p.connectPair('C', 'Q')
+        p.connectPair('O', 'A')
+        p.connectPair('P', 'Y')
+        p.connectPair('E', 'B')
+        p.connectPair('T', 'R')
+        p.connectPair('D', 'N')
+        p.connectPair('V', 'I')
+
+        e.machine_configuration_process(1, i, j, 2, k, 1, 3, 1, 1, p)
+        e.complete_text_translation("AAAAAAAAAA")
+        p = Plugboard()
+# for i in range(100000):
+#     textToEncrypt = "HI MY NAME IS TOM"
+#     #print("encrypt: " + textToEncrypt)
+#     #print("decrypt: ", end='')
+#     e.complete_text_translation(textToEncrypt)
