@@ -19,28 +19,25 @@ class Enigma(Substitutor):
         self.configured = True
 
     def complete_text_translation(self, text):
-        if self.configured:
-            for c in text:
-                if 'A' <= c <= 'Z':
-                    c = self.plugBoard.plugs[c]
-                    # the ASCII value of the char
-                    c_to_num = ord(c) - LETTER_A_IN_ASCII
+        for c in text:
+            c = self.plugBoard.plugs[c]
+            # the ASCII value of the char
+            c_to_num = ord(c) - LETTER_A_IN_ASCII
 
-                    Substitutor.circular_shift(self)
-                    encrypt_process = Substitutor.letter_index_conversions(self, c_to_num, self.first,
-                                                                           self.firstRotorIndex, self.FirstRingSetting)
-                    encrypt_process = Substitutor.letter_index_conversions(self, encrypt_process, self.second,
-                                                                           self.secondRotorIndex, self.SecondRingSetting)
-                    encrypt_process = Substitutor.letter_index_conversions(self, encrypt_process, self.third,
+            Substitutor.circular_shift(self)
+            encrypt_process = self.letter_index_conversions(c_to_num, self.first,
+                                                                   self.firstRotorIndex, self.FirstRingSetting)
+            encrypt_process = self.letter_index_conversions(encrypt_process, self.second,
+                                                                   self.secondRotorIndex, self.SecondRingSetting)
+            encrypt_process = self.letter_index_conversions(encrypt_process, self.third,
+                                                                   self.thirdRotorIndex, self.ThirdRingSetting)
+            encrypt_process = self.reflectorConversion[encrypt_process]
+            encrypt_process = self.letter_index_reverse_conversions(encrypt_process, self.third,
                                                                            self.thirdRotorIndex, self.ThirdRingSetting)
-                    encrypt_process = self.reflectorConversion[encrypt_process]
-                    encrypt_process = Substitutor.letter_index_reverse_conversions(self, encrypt_process, self.third,
-                                                                                   self.thirdRotorIndex, self.ThirdRingSetting)
-                    encrypt_process = Substitutor.letter_index_reverse_conversions(self, encrypt_process, self.second,
-                                                                                   self.secondRotorIndex, self.SecondRingSetting)
-                    encrypt_process = Substitutor.letter_index_reverse_conversions(self, encrypt_process, self.first,
-                                                                                   self.firstRotorIndex, self.FirstRingSetting)
-                    encrypt_process = self.plugBoard.plugs[chr(encrypt_process+65)]
-                    print(encrypt_process, end='')
-        else:
-            print("enigma is not configured")
+            encrypt_process = self.letter_index_reverse_conversions(encrypt_process, self.second,
+                                                                           self.secondRotorIndex, self.SecondRingSetting)
+            encrypt_process = self.letter_index_reverse_conversions(encrypt_process, self.first,
+                                                                           self.firstRotorIndex, self.FirstRingSetting)
+            encrypt_process = self.plugBoard.plugs[chr(encrypt_process+65)]
+            # print(encrypt_process, end='')
+
