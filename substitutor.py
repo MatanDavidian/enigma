@@ -4,7 +4,6 @@ from consts import ROTOR_REVERSE_CONVERSION3 , ROTOR_REVERSE_CONVERSION4 , ROTOR
 from consts import REFLECTOR_CONVERSION
 
 class Substitutor():
-
     def __init__(self):
         self.configured = False
         self.firstTurnoverNotch = 0
