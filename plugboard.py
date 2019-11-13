@@ -12,8 +12,10 @@ class Plugboard():
         for easy switching, and using.
     """
     def __init__(self):
-        self.plugs={}
-        for i in range (LETTER_A_IN_ASCII,LETTER_Z_IN_ASCII+1):
+        self.plugs = {}
+
+    def initials(self):
+        for i in range(LETTER_A_IN_ASCII, LETTER_Z_IN_ASCII):
             self.plugs[chr(i)] = chr(i)
     """
         Connecting plug1 to plug2 , and plug2 to plug1

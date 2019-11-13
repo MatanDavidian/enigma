@@ -1,6 +1,7 @@
 from consts import ROTOR_CONVERSION, ROTOR_REVERSE_CONVERSION,REFLECTOR_CONVERSION
 
 class Substitutor():
+
     def __init__(self):
         self.configured = False
         self.firstTurnoverNotch = 0
@@ -52,10 +53,12 @@ class Substitutor():
             self.thirdTurnoverNotch = 25
 
     def letter_index_conversions(self, char_input_num, rotor_num, rotor_index, ring_setting):
-        return (self.rotorConversion[rotor_num - 1][(char_input_num + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
+        return (self.rotorConversion[rotor_num][
+                    (char_input_num + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
 
     def letter_index_reverse_conversions(self, char_input, rotor_num, rotor_index, ring_setting):
-        return (self.rotorReverseConversion[rotor_num - 1][(char_input + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
+        return (self.rotorReverseConversion[rotor_num][
+                    (char_input + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
 
     def circular_shift(self):
         if self.firstRotorIndex == self.firstTurnoverNotch or self.secondRotorIndex == self.secondTurnoverNotch:
