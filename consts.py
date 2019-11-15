@@ -34,8 +34,6 @@ ROTOR_REVERSE_CONVERSION4 = [7, 25, 22, 21, 0, 17, 19, 13, 11, 6, 20, 15, 23, 16
                                   'G': 19, 'K': 20, 'D': 21, 'C': 22, 'M': 23, 'W': 24, 'B': 25}
 '''
 
-
-
 # ROTOR_CONVERSION5= V   Z   B   R  G  I   T   Y   U   P   S  D   N  H   L   X  A   W   M  J   Q   O  F  E  C   K
 ROTOR_CONVERSION5 = [21, 25, 1, 17, 6, 8, 19, 24, 20, 15, 18, 3, 13, 7, 11, 23, 0, 22, 12, 9, 16, 14, 5, 4, 2, 10]
 ROTOR_REVERSE_CONVERSION5 = [16, 2, 24, 11, 23, 22, 4, 13, 5, 19, 25, 14, 18, 12, 21, 9, 20, 3, 10, 6, 8, 0, 17, 15, 7, 1]
@@ -44,8 +42,6 @@ ROTOR_REVERSE_CONVERSION5 = [16, 2, 24, 11, 23, 22, 4, 13, 5, 19, 25, 14, 18, 12
                                    'S': 10, 'D': 11, 'N': 12, 'H': 13, 'L': 14, 'X': 15, 'A': 16, 'W': 17, 'M': 18,
                                    'J': 19, 'Q': 20, 'O': 21, 'F': 22, 'E': 23, 'C': 24, 'K': 25}
 '''
-
-
 
 # REFLECTOR_CONVERSION= Y   R   U   H   Q   S   L  D   P   X   N  G   O  K   M   I  E  B  F   Z  C   W   V  J  A  T
 REFLECTOR_CONVERSION = [24, 17, 20, 7, 16, 18, 11, 3, 15, 23, 13, 6, 14, 10, 12, 8, 4, 1, 5, 25, 2, 22, 21, 9, 0, 19]

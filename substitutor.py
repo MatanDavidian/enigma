@@ -1,5 +1,8 @@
-from consts import ROTOR_CONVERSION, ROTOR_REVERSE_CONVERSION,REFLECTOR_CONVERSION
-
+from consts import ROTOR_CONVERSION, ROTOR_REVERSE_CONVERSION, REFLECTOR_CONVERSION
+'''
+Substitutor contains all rotors permutation array(forward and reverse), reflector permutation array.
+Substitutor Responsible for permutation result and rotors rotate.
+'''
 class Substitutor():
 
     def __init__(self):
@@ -17,7 +20,9 @@ class Substitutor():
         self.rotorReverseConversion = ROTOR_REVERSE_CONVERSION
 
         self.reflectorConversion = REFLECTOR_CONVERSION
-
+    '''
+    sets the rotors TurnoverNotch according the 3 selected rotors (out of 5)
+    '''
     def set_rotor_order(self, first, second, third):
         if first == 1:
             self.firstTurnoverNotch = 16
@@ -51,15 +56,34 @@ class Substitutor():
             self.thirdTurnoverNotch = 9
         elif third == 5:
             self.thirdTurnoverNotch = 25
-
-    def letter_index_conversions(self, char_input_num, rotor_num, rotor_index, ring_setting):
+    '''
+    Performing the Forward permutation according to next formula:
+    For an input letter A, ring offset B, ring setting C, and rotor forward or
+    reverse permutation P, the result is given by P(A+B−C)−B+C.
+    when P = rotorConversion array according to chosen rotor.
+    '''
+    def letter_index_conversions(self, char_input_num, rotor_num, ring_offset, ring_setting):
         return (self.rotorConversion[rotor_num][
-                    (char_input_num + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
+                    (char_input_num + ring_offset - ring_setting) % 26] - ring_offset + ring_setting) % 26
 
-    def letter_index_reverse_conversions(self, char_input, rotor_num, rotor_index, ring_setting):
+    '''
+        Performing the Reverse permutation according to next formula:
+        For an input letter A, ring offset B, ring setting C, and rotor forward or
+        reverse permutation P, the result is given by P(A+B−C)−B+C.
+        when P = rotorReverseConversion array according to chosen rotor.
+        '''
+    def letter_index_reverse_conversions(self, char_input, rotor_num, ring_offset, ring_setting):
         return (self.rotorReverseConversion[rotor_num][
-                    (char_input + rotor_index - ring_setting) % 26] - rotor_index + ring_setting) % 26
-
+                    (char_input + ring_offset - ring_setting) % 26] - ring_offset + ring_setting) % 26
+    '''
+    Each key press steps at least one rotor before translation is per-formed. For left, middle and right rotors (L, M, R),
+    the stepping algorithm is as follows:
+    if R.notch or M.notch
+        if M.notch
+            advance L.offset
+        advance M.offset
+    advance R.offset
+    '''
     def circular_shift(self):
         if self.firstRotorIndex == self.firstTurnoverNotch or self.secondRotorIndex == self.secondTurnoverNotch:
             if self.secondRotorIndex == self.secondTurnoverNotch:
